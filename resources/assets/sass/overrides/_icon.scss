@@ -1,0 +1,35 @@
+.icon {
+	@include fa(24px, 24px);
+
+	.material-icons {
+		font-size: inherit;
+		line-height: inherit;
+	}
+
+	&.is-small {
+		@include fa(18px, 18px);
+	}
+	&.is-medium {
+		@include fa(36px, 36px);
+	}
+	&.is-large {
+		@include fa(48px, 48px);
+	}
+}
+.table {
+	th, td {
+		&.is-icon {
+			padding: 6px;
+			.material-icons {
+				@include fa(24px, 24px);
+			}
+			&.is-link {
+				padding: 0;
+				& > a {
+					padding: 6px;
+				}
+			}
+		}
+	}
+}
+

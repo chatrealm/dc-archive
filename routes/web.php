@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
+
+Route::group([
+	'middleware' => 'can:is-admin',
+	'prefix' => 'admin',
+	'as' => 'admin.'
+], function() {
+	Route::get('/', 'Admin\AdminHomeController@index')->name('index');
+
+	Route::resource('users', 'Admin\UsersController', ['only' => [
+		'index'
+	]]);
+});

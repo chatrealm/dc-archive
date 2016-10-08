@@ -1,7 +1,7 @@
-<div class="nav">
+<div class="nav has-shadow">
 	<div class="container">
 		<div class="nav-left">
-			<a class="nav-item is-brand" href="{{ url('/') }}">&lt;&gt; Archives</a>
+			<a class="nav-item is-brand" href="{{ route('home') }}">&lt;&gt; Archives</a>
 			<a class="nav-item" href="#">Browse</a>
 		</div>
 		<div class="nav-right">
@@ -12,6 +12,9 @@
 				<div class="nav-item">
 					{{ Auth::user()->username }}
 				</div>
+				@can ('is-admin')
+					<a href="{{ route('admin.index') }}" class="nav-item">Admin</a>
+				@endcan
 				<a href="{{ url('/logout') }}" class="nav-item"
 					onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 					Logout

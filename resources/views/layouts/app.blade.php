@@ -11,7 +11,8 @@
 	<title>{{ config('app.name', 'Laravel') }}</title>
 
 	<!-- Styles -->
-	<link href="{{ elixir('assets/app.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="{{ elixir('assets/app.css') }}" rel="stylesheet" />
 </head>
 <body class="no-js">
 	<div id="app">

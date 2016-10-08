@@ -26,4 +26,13 @@ class User extends Authenticatable {
 		'password', 'remember_token',
 	];
 
+	/**
+	* The attributes that should be casted to native types.
+	*
+	* @var array
+	*/
+	protected $casts = [
+		'is_admin' => 'boolean',
+	];
+
 }
