@@ -39,9 +39,7 @@ class ForgotPasswordController extends Controller {
 			'url' => action('Auth\ForgotPasswordController@sendResetLinkEmail')
 		]);
 
-		return view('auth.passwords.email', [
-			'form' => $form
-		]);
+		return view('auth.passwords.email', compact('form'));
 	}
 
 }

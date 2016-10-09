@@ -168,7 +168,9 @@ return [
 		 */
 
 		Barryvdh\Debugbar\ServiceProvider::class,
+		Cviebrock\EloquentSluggable\ServiceProvider::class,
 		Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+		Szykra\Notifications\NotificationServiceProvider::class,
 
 		/*
 		 * Application Service Providers...
@@ -178,6 +180,7 @@ return [
 		// Chatrealm\DCArchive\Providers\BroadcastServiceProvider::class,
 		Chatrealm\DCArchive\Providers\EventServiceProvider::class,
 		Chatrealm\DCArchive\Providers\RouteServiceProvider::class,
+		Chatrealm\DCArchive\Providers\YoutubeServiceProvider::class,
 
 	],
 
@@ -207,6 +210,7 @@ return [
 		'Eloquent' => Illuminate\Database\Eloquent\Model::class,
 		'Event' => Illuminate\Support\Facades\Event::class,
 		'File' => Illuminate\Support\Facades\File::class,
+		'Flash' => Szykra\Notifications\Flash::class,
 		'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
 		'Gate' => Illuminate\Support\Facades\Gate::class,
 		'Hash' => Illuminate\Support\Facades\Hash::class,

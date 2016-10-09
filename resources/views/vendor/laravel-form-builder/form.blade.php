@@ -1,3 +1,9 @@
+<?php
+if (!isset($formOptions['class'])) {
+	$formOptions['class'] = 'block';
+}
+?>
+
 @if ($showStart)
 	<?= Form::open($formOptions) ?>
 @endif

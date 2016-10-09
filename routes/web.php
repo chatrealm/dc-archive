@@ -22,7 +22,12 @@ Route::group([
 ], function() {
 	Route::get('/', 'Admin\AdminHomeController@index')->name('index');
 
-	Route::resource('users', 'Admin\UsersController', ['only' => [
+	Route::resource('channel', 'Admin\ChannelsController', [
+		'parameters' => [
+			'channel' => 'channel_id'
+		]
+	]);
+	Route::resource('user', 'Admin\UsersController', ['only' => [
 		'index'
 	]]);
 });

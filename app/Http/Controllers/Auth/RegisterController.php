@@ -48,9 +48,7 @@ class RegisterController extends Controller {
 			'url' => action('Auth\RegisterController@register')
 		]);
 
-		return view('auth.register', [
-			'form' => $form
-		]);
+		return view('auth.register', compact('form'));
 	}
 
 	/**

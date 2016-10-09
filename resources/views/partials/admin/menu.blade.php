@@ -7,9 +7,15 @@ $menu = [
 		]
 	],
 	[
+		'label' => 'Content',
+		'items' => [
+			['text' => 'Channels', 'url' => route('admin.channel.index'), 'active' => 'admin.channel*']
+		]
+	],
+	[
 		'label' => 'Users',
 		'items' => [
-			['text' => 'Users', 'url' => route('admin.users.index'), 'active' => 'admin.users*']
+			['text' => 'Users', 'url' => route('admin.user.index'), 'active' => 'admin.user*']
 		]
 	]
 ];

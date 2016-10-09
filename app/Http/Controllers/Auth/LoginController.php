@@ -46,9 +46,7 @@ class LoginController extends Controller {
 			'url' => action('Auth\LoginController@login')
 		]);
 
-		return view('auth.login', [
-			'form' => $form
-		]);
+		return view('auth.login', compact('form'));
 	}
 
 }

@@ -13,6 +13,9 @@ return [
 	| to have a conventional place to find your various credentials.
 	|
 	*/
+	'google' => [
+		'key' => env('GOOGLE_KEY')
+	],
 
 	'mailgun' => [
 		'domain' => env('MAILGUN_DOMAIN'),

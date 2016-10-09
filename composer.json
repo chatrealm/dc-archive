@@ -8,7 +8,10 @@
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-debugbar": "^2.3",
         "kris/laravel-form-builder": "^1.9",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "cviebrock/eloquent-sluggable": "^4.1",
+        "guzzlehttp/guzzle": "~6.0",
+        "szykra/laravel-flash-notifications": "^0.3.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

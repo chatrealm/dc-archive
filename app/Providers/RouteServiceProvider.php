@@ -2,6 +2,7 @@
 
 namespace Chatrealm\DCArchive\Providers;
 
+use Chatrealm\DCArchive\Models\Channel;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,12 @@ class RouteServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot() {
-		//
-
 		parent::boot();
+
+		Route::model('channel', Channel::class);
+		Route::bind('channel_id', function ($value) {
+			return Channel::where('id', $value)->firstOrFail();
+		});
 	}
 
 	/**

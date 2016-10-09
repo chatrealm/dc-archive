@@ -2,6 +2,7 @@
 
 @section('content')
 	<table class="table">
+
 		<thead>
 			<th>ID</th>
 			<th>Username</th>
@@ -30,4 +31,6 @@
 			@endforelse
 		</tbody>
 	</table>
+
+	{{ $users->links() }}
 @endsection()
