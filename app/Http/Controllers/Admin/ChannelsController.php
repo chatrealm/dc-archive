@@ -6,7 +6,6 @@ use Chatrealm\DCArchive\Http\Controllers\Controller;
 use Chatrealm\DCArchive\Http\Requests\CRUD\StoreChannel;
 use Chatrealm\DCArchive\Models\Channel;
 use Flash;
-use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class ChannelsController extends Controller {
@@ -57,11 +56,11 @@ class ChannelsController extends Controller {
 			Flash::success('Channel added.');
 
 			return redirect()->route('admin.channel.index');
-		} else {
-			Flash::error('Saving failed');
-
-			return back()->withInput();
 		}
+
+		Flash::error('Saving failed');
+
+		return back()->withInput();
 	}
 
 	/**
@@ -112,7 +111,7 @@ class ChannelsController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \Chatrealm\DCArchive\Models\Channel  $id
+	 * @param  \Chatrealm\DCArchive\Models\Channel  $channel
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(Channel $channel) {
@@ -122,7 +121,7 @@ class ChannelsController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  \Chatrealm\DCArchive\Models\Channel  $id
+	 * @param  \Chatrealm\DCArchive\Models\Channel  $channel
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Channel $channel) {
@@ -146,7 +145,7 @@ class ChannelsController extends Controller {
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Chatrealm\DCArchive\Http\Requests\CRUD\StoreChannel  $request
-	 * @param  \Chatrealm\DCArchive\Models\Channel  $id
+	 * @param  \Chatrealm\DCArchive\Models\Channel  $channel
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(StoreChannel $request, Channel $channel) {
@@ -161,11 +160,11 @@ class ChannelsController extends Controller {
 			Flash::success('Channel updated.');
 
 			return redirect()->route('admin.channel.show', ['channel_id' => $channel->id]);
-		} else {
-			Flash::error('Saving failed');
-
-			return back()->withInput();
 		}
+
+		Flash::error('Saving failed');
+
+		return back()->withInput();
 	}
 
 	/**

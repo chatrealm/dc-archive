@@ -16,7 +16,7 @@ class YoutubeServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function register() {
-		$this->app->singleton('youtube.client', function($app) {
+		$this->app->singleton('youtube.client', function() {
 			$stack = HandlerStack::create();
 			// Add YouTube API key
 			$stack->unshift(Middleware::mapRequest(function (RequestInterface $request) {

@@ -2,6 +2,7 @@
 
 namespace Chatrealm\DCArchive\Providers;
 
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
@@ -20,7 +21,9 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function register() {
-		//
+		if ($this->app->environment() !== 'production') {
+			$this->app->register(IdeHelperServiceProvider::class);
+		}
 	}
 
 }
