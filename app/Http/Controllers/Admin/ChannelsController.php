@@ -4,6 +4,7 @@ namespace Chatrealm\DCArchive\Http\Controllers\Admin;
 
 use Chatrealm\DCArchive\Http\Controllers\Controller;
 use Chatrealm\DCArchive\Http\Requests\CRUD\StoreChannel;
+use Chatrealm\DCArchive\Jobs\ScanChannelForNewVideos;
 use Chatrealm\DCArchive\Models\Channel;
 use Flash;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
@@ -53,6 +54,8 @@ class ChannelsController extends Controller {
 		$this->setYoutubeInfo($channel);
 
 		if ($channel->save()) {
+			dispatch(new ScanChannelForNewVideos($channel, true));
+
 			Flash::success('Channel added.');
 
 			return redirect()->route('admin.channel.index');
@@ -151,12 +154,18 @@ class ChannelsController extends Controller {
 	public function update(StoreChannel $request, Channel $channel) {
 		$channel->fill($request->only('name', 'slug', 'youtube_id'));
 
+		$rescan_channel = false;
 		if ($channel->isDirty('youtube_id')) {
 			// Get channel info
 			$this->setYoutubeInfo($channel);
+			$rescan_channel = true;
 		}
 
 		if ($channel->save()) {
+			if($rescan_channel) {
+				dispatch(new ScanChannelForNewVideos($channel, true));
+			}
+
 			Flash::success('Channel updated.');
 
 			return redirect()->route('admin.channel.show', ['channel_id' => $channel->id]);
