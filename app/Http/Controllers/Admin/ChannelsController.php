@@ -54,6 +54,7 @@ class ChannelsController extends Controller {
 		$this->setYoutubeInfo($channel);
 
 		if ($channel->save()) {
+			Flash::info('Channel queued for scan.');
 			dispatch(new ScanChannelForNewVideos($channel, true));
 
 			Flash::success('Channel added.');
@@ -162,7 +163,8 @@ class ChannelsController extends Controller {
 		}
 
 		if ($channel->save()) {
-			if($rescan_channel) {
+			if ($rescan_channel) {
+				Flash::info('Channel queued for rescan.');
 				dispatch(new ScanChannelForNewVideos($channel, true));
 			}
 

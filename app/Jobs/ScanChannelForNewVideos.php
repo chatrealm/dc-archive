@@ -5,6 +5,7 @@ namespace Chatrealm\DCArchive\Jobs;
 use Carbon\Carbon;
 use Chatrealm\DCArchive\Models\Channel;
 use Chatrealm\DCArchive\Models\Video;
+use DateInterval;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -143,8 +144,6 @@ class ScanChannelForNewVideos implements ShouldQueue {
 				$dbVideo->fill([
 					'title' => $youtubeVideo->snippet->title,
 					'description' => $youtubeVideo->snippet->description,
-					'published_at' => Carbon::parse($youtubeVideo->snippet->publishedAt),
-					'youtube_id' => $youtubeVideo->snippet->resourceId->videoId,
 					'channel_id' => $this->channel->id
 				]);
 
@@ -165,17 +164,43 @@ class ScanChannelForNewVideos implements ShouldQueue {
 	 * @return void
 	 **/
 	public function addMissingVideos($youtubeVideos) {
+		$client = app('youtube.client');
 		// Add in reverse order to maintain order
-		$insertables = $youtubeVideos->reverse()->map(function($youtubeVideo) {
-			// Save one by one to allow slugging
-			Video::create([
-				'title' => $youtubeVideo->snippet->title,
-				'description' => $youtubeVideo->snippet->description,
-				'published_at' => Carbon::parse($youtubeVideo->snippet->publishedAt),
-				'youtube_id' => $youtubeVideo->snippet->resourceId->videoId,
-				'channel_id' => $this->channel->id
+		$insertables = $youtubeVideos->reverse()->chunk(50)->map(function($videoChunk) use($client) {
+			$response = $client->get('videos', [
+				'query' => [
+					'fields' => 'items(contentDetails/duration,id,snippet(description,publishedAt,title))',
+					'id' => $videoChunk->implode('snippet.resourceId.videoId', ','),
+					'part' => 'snippet,contentDetails'
+				]
 			]);
+			$videoPart = json_decode($response->getBody());
+			$videos = collect($videoPart->items);
+
+			$videos->map(function($youtubeVideo) {
+				// Save one by one to allow slugging
+				Video::create([
+					'channel_id' => $this->channel->id,
+					'description' => $youtubeVideo->snippet->description,
+					'duration' => $this->durationToSeconds($youtubeVideo->contentDetails->duration),
+					'published_at' => Carbon::parse($youtubeVideo->snippet->publishedAt),
+					'title' => $youtubeVideo->snippet->title,
+					'youtube_id' => $youtubeVideo->id
+				]);
+			});
 		});
+	}
+
+	/**
+	 * Get seconds from ISO 8601 duration
+	 *
+	 * @param string $duration Description
+	 * @return int
+	 **/
+	protected function durationToSeconds($duration) {
+		$start = Carbon::createFromTimestamp(0);
+		$start->add(new DateInterval($duration));
+		return $start->timestamp;
 	}
 
 }

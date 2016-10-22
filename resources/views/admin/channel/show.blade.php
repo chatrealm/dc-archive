@@ -40,7 +40,11 @@
 			<tr>
 				<th>Last Checked:</th>
 				<td>
-					{{ $channel->last_updated ? $channel->last_updated : 'Never' }}
+					@if ($channel->last_updated)
+						@include('partials.time', ['time' => $channel->last_updated])
+					@else
+						<em>Never</em>
+					@endif
 				</td>
 			</tr>
 		</tbody>
