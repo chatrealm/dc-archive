@@ -3,6 +3,7 @@
 namespace Chatrealm\DCArchive\Providers;
 
 use Chatrealm\DCArchive\Models\Channel;
+use Chatrealm\DCArchive\Models\Video;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,10 @@ class RouteServiceProvider extends ServiceProvider {
 		Route::model('channel', Channel::class);
 		Route::bind('channel_id', function ($value) {
 			return Channel::where('id', $value)->firstOrFail();
+		});
+		Route::model('video', Video::class);
+		Route::bind('video_id', function ($value) {
+			return Video::where('id', $value)->firstOrFail();
 		});
 	}
 

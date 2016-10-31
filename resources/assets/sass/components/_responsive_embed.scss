@@ -1,0 +1,45 @@
+// Normal responsive embed based on foundation's responsive embed
+.responsive-embed {
+	position: relative;
+	height: 0;
+	padding-bottom: 9 / 16 * 100%;
+	overflow: hidden;
+
+	iframe,
+	object,
+	embed,
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// Embed that adjusts itself based on user's screen
+// http://stackoverflow.com/a/20593342
+.responsive-fullwidth-embed {
+	$width: 16;
+	$height: 9;
+	$max-height-clearance: 100px;
+	$max-height-fallback-ratio: 0.85;
+
+	width: 100vw;
+	height: ($height/$width) * 100vw;
+	max-height: $max-height-fallback-ratio * 100vh;
+	max-height: calc(100vh - #{$max-height-clearance});
+
+	@media screen and (max-height: 300px) {
+		max-height: $max-height-fallback-ratio * 100vh;
+	}
+
+	iframe,
+	object,
+	embed,
+	video {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+}

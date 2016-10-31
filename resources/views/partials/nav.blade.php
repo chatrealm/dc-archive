@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="nav-left">
 			<a class="nav-item is-brand" href="{{ route('home') }}">&lt;&gt; Archives</a>
-			<a class="nav-item" href="#">Browse</a>
+			<a class="nav-item" href="{{ route('browse') }}">Browse</a>
 		</div>
 		<div class="nav-right">
 			@if (Auth::guest())

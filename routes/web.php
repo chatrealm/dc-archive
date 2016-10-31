@@ -15,6 +15,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+Route::get('browse', 'VideoController@index')->name('browse');
+Route::get('video/{video}', 'VideoController@show')->name('video');
+
 Route::group([
 	'middleware' => 'can:is-admin',
 	'prefix' => 'admin',

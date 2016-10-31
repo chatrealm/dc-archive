@@ -1,0 +1,7 @@
+.media-left, .media-content, .media-right {
+ 	@for $i from 1 through 12 {
+		&.is-#{$i} {
+			width: ($i / 12) * 100%;
+		}
+	}
+}
