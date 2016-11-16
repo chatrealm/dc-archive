@@ -1,4 +1,10 @@
 {
-	"presets": ["latest-minimal"],
+	"presets": [
+		["env", {
+			"targets": {
+				"node": true
+			}
+		}]
+	],
 	"plugins": ["transform-runtime"]
 }

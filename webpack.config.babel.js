@@ -4,9 +4,36 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import ManifestPlugin from 'webpack-manifest-plugin'
 import webpack from 'webpack'
 
+const babelSettings = {
+	babelrc: false,
+	presets: [
+		['env', {
+			targets: {
+				browsers: '> 1%, last 2 versions, Firefox ESR'
+			},
+			modules: false
+		}]
+	],
+	plugins: ['transform-runtime']
+}
+
+const defaultDefine = {
+	'typeof window': JSON.stringify('object'),
+}
+
+const prodDefine = {
+	'process.env.NODE_ENV': 'production'
+}
+
+const devDefine = {
+	'process.env.NODE_ENV': 'development'
+}
+
 export default function ({
 	prod = false
 } = {}) {
+	const define = Object.assign({}, defaultDefine, prod ? prodDefine : devDefine)
+
 	return {
 		entry: {
 			app: ['./resources/assets/js/app.js', './resources/assets/sass/app.scss']
@@ -19,102 +46,60 @@ export default function ({
 		},
 		resolve: {
 			alias: {
-				// Latest jQuery
-				jquery: require.resolve('jquery'),
 				// Include template compiler
-				vue: 'vue/dist/vue.js'
+				vue$: 'vue/dist/vue.js'
 			}
 		},
 		module: {
 			rules: [
-				{
+				{ // vue files
 					test: /\.vue$/,
-					loader: 'vue'
+					loader: 'vue-loader',
+					options: {
+						loaders: {
+							js: [{
+								loader: 'babel-loader',
+								options: babelSettings
+							}]
+						}
+					}
 				},
-				{
-					// JS
+				{ // JS
 					test: /\.js$/,
 					exclude: /node_modules/,
-					loader: 'babel'
+					loader: 'babel-loader',
+					options: babelSettings
 				},
-				{
-					// Sass
+				{ // Sass
 					test: /\.scss$/,
 					// Disable sass minification so css-loader handles it
 					loader: ExtractTextPlugin.extract([
-						'css',
-						'postcss',
+						'css-loader',
+						'postcss-loader',
 						{
-							loader: 'sass',
-							query: {
+							loader: 'sass-loader',
+							options: {
 								outputStyle: 'nested'
 							}
 						}
 					])
 				},
-				{
-					// Images and other shenaniganiganidingdongs
+				{ // Images and other shenaniganiganidingdongs
 					test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
 					loader: 'url',
-					query: {
+					options: {
 						limit: 10000,
 						name: prod ? '[name].[hash:7].[ext]' : '[name].[ext]'
 					}
-				},
-				{
-					test: /\.js$/,
-					exclude: /foundation\.core\.js$/,
-					include: path.resolve(__dirname, 'node_modules/foundation-sites'),
-					loaders: [
-						{
-							loader: 'imports',
-							query: {
-								jQuery: 'jquery',
-								Foundation: 'foundation-sites/js/foundation.core'
-							}
-						},
-						'babel'
-					]
-				},
-				{
-					test: /foundation\.core\.js$/,
-					include: path.resolve(__dirname, 'node_modules/foundation-sites'),
-					loaders: [
-						{
-							loader: 'imports',
-							query: {
-								jQuery: 'jquery'
-							}
-						},
-						{
-							loader: 'exports',
-							query: 'window.Foundation'
-						},
-						'babel'
-					]
 				}
 			]
 		},
+		devtool: prod ? '' : 'cheap-module-eval-source-map',
 		plugins: ([
 			// Global Plugins
-			new webpack.LoaderOptionsPlugin({
-				options: {
-					babel: {
-						presets: [
-							['latest', {
-								es2015: {modules: false}
-							}]
-						],
-						plugins: ['transform-runtime']
-					},
-					postcss: () => {
-						return [
-							require('postcss-flexbugs-fixes')
-						]
-					}
-				}
-			}),
-			new ExtractTextPlugin(prod ? '[name].[contenthash].css' : '[name].css')
+			new ExtractTextPlugin(prod ? '[name].[contenthash].css' : '[name].css'),
+			new webpack.DefinePlugin(define),
+			new webpack.NormalModuleReplacementPlugin(/^he$/, path.resolve(__dirname, 'resources/assets/js/_hack_for_he.js'))
 		]).concat(prod ? [
 			// Production Plugins
 		] : [

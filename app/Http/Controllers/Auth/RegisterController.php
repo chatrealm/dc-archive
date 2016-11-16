@@ -5,8 +5,8 @@ namespace Chatrealm\DCArchive\Http\Controllers\Auth;
 use Chatrealm\DCArchive\Http\Controllers\Controller;
 use Chatrealm\DCArchive\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
-use Validator;
 
 class RegisterController extends Controller {
 	/*
