@@ -11,7 +11,9 @@
 |
 */
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/**
+ * @var \Illuminate\Database\Eloquent\Factory
+ */
 $factory->define(Chatrealm\DCArchive\User::class, function (Faker\Generator $faker) {
 	static $password;
 
