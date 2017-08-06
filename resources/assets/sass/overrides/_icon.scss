@@ -1,32 +1,42 @@
 .icon {
-	@include fa(24px, 24px);
-
 	.material-icons {
 		font-size: inherit;
 		line-height: inherit;
+		font-size: 21px;
 	}
 
 	&.is-small {
-		@include fa(18px, 18px);
+		.material-icons {
+			font-size: 14px;
+		}
 	}
 	&.is-medium {
-		@include fa(36px, 36px);
+		.material-icons {
+			font-size: 28px;
+		}
 	}
 	&.is-large {
-		@include fa(48px, 48px);
+		.material-icons {
+			font-size: 42px;
+		}
 	}
 }
 .table {
 	th, td {
 		&.is-icon {
-			padding: 6px;
+			padding: $table-cell-padding;
 			.material-icons {
 				@include fa(24px, 24px);
 			}
 			&.is-link {
 				padding: 0;
 				& > a {
-					padding: 6px;
+					display: block;
+					padding: $table-cell-padding;
+
+					.icon {
+						display: block;
+					}
 				}
 			}
 		}
