@@ -1,26 +1,26 @@
 @if ($paginator->hasPages())
 	<nav class="pagination">
 		@unless ($paginator->onFirstPage())
-			<a href="{{ $paginator->previousPageUrl() }}" class="button" rel="prev">&laquo;</a>
+			<a href="{{ $paginator->previousPageUrl() }}" class="pagination-previous" rel="prev">&laquo; Previous</a>
 		@else
-			<a class="button is-disabled">&laquo;</a>
+			<a class="pagination-previous" disabled>&laquo; Previous</a>
 		@endif
 		@if ($paginator->hasMorePages())
-			<a href="{{ $paginator->nextPageUrl() }}" class="button" rel="next">&raquo;</a>
+			<a href="{{ $paginator->nextPageUrl() }}" class="pagination-next" rel="next">Next &raquo;</a>
 		@else
-			<a class="button is-disabled">&raquo;</a>
+			<a class="pagination-next" disabled>Next &raquo;</a>
 		@endif
-		<ul>
+		<ul class="pagination-list">
 			@foreach ($elements as $element)
 				@if (is_string($element))
-					<li class="disabled"><span>{{ $element }}</span></li>
+					<li><span class="pagination-ellipsis">{{ $element }}</span></li>
 				@endif
 				@if (is_array($element))
 					@foreach ($element as $page => $url)
 						@if ($page == $paginator->currentPage())
-							<li><a href="{{ $url }}" class="button is-primary">{{ $page }}</a></li>
+							<li><a href="{{ $url }}" class="pagination-link is-current">{{ $page }}</a></li>
 						@else
-							<li><a href="{{ $url }}" class="button">{{ $page }}</a></li>
+							<li><a href="{{ $url }}" class="pagination-link">{{ $page }}</a></li>
 						@endif
 					@endforeach
 				@endif

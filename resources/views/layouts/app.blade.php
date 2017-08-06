@@ -8,7 +8,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>{{ config('app.name', 'Laravel') }}</title>
+	<title>{{ config('app.name', 'Diamond Club') }}</title>
 
 	<!-- Styles -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />

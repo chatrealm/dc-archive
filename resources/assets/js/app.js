@@ -1,20 +1,19 @@
 import Vue from 'vue'
-import VueResource from 'vue-resource'
+import axios from 'axios'
+import './components'
 
-Vue.use(VueResource)
 
-const csrfToken = document.querySelector('meta[name="csrf-token"]')
+// configure axios
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+const token = document.head.querySelector('meta[name="csrf-token"]');
 
-if (csrfToken) {
-	Vue.http.interceptors.push((request, next) => {
-		request.headers.set('X-CSRF-TOKEN', csrfToken.getAttribute('content'))
-
-		next()
-	})
+if (token) {
+	axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 }
 
-// Vue
+Vue.prototype.$http = axios
 
+// create app
 const app = new Vue({
 	el: '#app'
 })

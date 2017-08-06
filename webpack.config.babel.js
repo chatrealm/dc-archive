@@ -48,7 +48,8 @@ export default function ({
 			alias: {
 				// Include template compiler
 				vue$: 'vue/dist/vue.js'
-			}
+			},
+			extensions: [".js", ".vue"]
 		},
 		module: {
 			rules: [
