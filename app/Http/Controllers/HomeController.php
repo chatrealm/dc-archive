@@ -2,6 +2,8 @@
 
 namespace Chatrealm\DCArchive\Http\Controllers;
 
+use Chatrealm\DCArchive\Models\Video;
+
 class HomeController extends Controller {
 	/**
 	 * Show the application dashboard.
@@ -9,7 +11,13 @@ class HomeController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		return view('home');
+		$videos = Video::query()
+			->with(['channel'])
+			->orderBy('published_at', 'DESC')
+			->take(10)
+			->get();
+
+		return view('home', compact('videos'));
 	}
 
 }

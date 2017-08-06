@@ -22,11 +22,11 @@ const defaultDefine = {
 }
 
 const prodDefine = {
-	'process.env.NODE_ENV': 'production'
+	'process.env.NODE_ENV': JSON.stringify('production')
 }
 
 const devDefine = {
-	'process.env.NODE_ENV': 'development'
+	'process.env.NODE_ENV': JSON.stringify('development')
 }
 
 export default function ({
@@ -99,8 +99,7 @@ export default function ({
 		plugins: ([
 			// Global Plugins
 			new ExtractTextPlugin(prod ? '[name].[contenthash].css' : '[name].css'),
-			new webpack.DefinePlugin(define),
-			new webpack.NormalModuleReplacementPlugin(/^he$/, path.resolve(__dirname, 'resources/assets/js/_hack_for_he.js'))
+			new webpack.DefinePlugin(define)
 		]).concat(prod ? [
 			// Production Plugins
 		] : [

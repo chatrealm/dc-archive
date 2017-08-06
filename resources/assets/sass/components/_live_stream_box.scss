@@ -1,0 +1,16 @@
+.live-stream {
+	&-box {
+		@extend .box;
+		color: $text !important;
+		height: 100%;
+
+		// hero forces whiiiite on titles
+		.hero & .title {
+			color: $title-color;
+		}
+	}
+	&-link {
+		display: block;
+		font-size: 0.75rem;
+	}
+}
