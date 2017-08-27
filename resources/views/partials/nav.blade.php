@@ -1,5 +1,5 @@
 <nav-bar inline-template>
-	<nav class="navbar">
+	<nav class="navbar {{ $navclass or '' }}">
 		<div class="navbar-brand">
 			<a href="{{ route('home') }}" class="navbar-item">
 				<img src="{{ asset('static/dctv-logo.png') }}" alt="DiamondClub.tv">

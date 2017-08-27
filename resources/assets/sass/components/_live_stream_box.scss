@@ -9,8 +9,13 @@
 			color: $title-color;
 		}
 	}
+	&-title {
+		@extend .title;
+		font-size: $size-3;
+	}
 	&-link {
 		display: block;
 		font-size: 0.75rem;
+		margin-top: 0.5em;
 	}
 }

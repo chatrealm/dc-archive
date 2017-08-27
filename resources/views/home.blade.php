@@ -1,9 +1,9 @@
 @extends('layouts.navless')
 
 @section('content')
-	<section class="hero is-black">
+	<section class="hero is-primary is-bold">
 		<div class="hero-head">
-			@include('partials.nav')
+			@include('partials.nav', ['navclass' => 'is-transparent'])
 		</div>
 		<div class="hero-body">
 			<div class="container">

@@ -1,8 +1,74 @@
-$sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7;
+// Based off jenil/bulmaswatch cyborg
+////////////////////////////////////////////////
+// CYBORG
+////////////////////////////////////////////////
+$grey-darker:  hsl(0, 0%, 21%);
+$grey-dark:    hsl(0, 0%, 29%);
+$grey:         hsl(0, 0%, 48%);
+$grey-light:   hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
 
-// Navbar
+$primary: #2A9FD6 !default;
+$primary-light: lighten($primary, 10);
+
+$white-ter:    #f5f5f5;
+
+$body-background-color: $black-bis;
+$background: $grey-darker;
+
+$border: $grey-dark;
+
+$title-color: #fff;
+$subtitle-color: $white-ter;
+$subtitle-strong-color: $white-ter;
+
+$text: #fff;
+$text-light: lighten($text, 10);
+$text-strong: darken($text, 5);
+
+$link-hover: $primary-light;
+$link-focus: $primary-light;
+$link-active: $primary-light;
+$link-hover-border: $grey-dark;
+$link-active-border: $grey;
+
+$button-color: $text;
+$button-background-color: #111;
+$button-border-color: $grey-darker;
+$button-hover-color: $grey-lighter;
+$button-focus: $grey-light;
+$button-active-color: $grey-light;
+
+$table-color: $text;
+$table-head: $grey-lighter;
+$table-background-color: $grey-darker;
+$table-cell-border: 1px solid $grey-dark;
+
+$table-row-hover-background-color: $grey-dark;
+$table-striped-row-even-background-color: $grey-dark;
+$table-striped-row-even-hover-background-color: lighten($grey-dark, 4);
+
+$pagination-border-color: $grey-darker;
+$pagination-disabled: $grey-light;
+$pagination-disabled-background-color: $grey-dark;
+
+$dropdown-content-background-color: $background;
+$dropdown-item-color: $text;
+
+// Smaller titles
+$size-1: 2.5rem;
+$size-2: 2rem;
+$size-3: 1.75rem;
+$size-4: 1.5rem;
+$size-5: 1.25rem;
+$size-6: 1rem;
+$size-7: 0.75rem;
+
+// Customise Navbar
+$navbar-background-color: $primary;
 $navbar-item-color: $white;
 $navbar-item-hover-color: $white-ter;
-$navbar-background-color: $black;
 $navbar-item-hover-background-color: rgba(255, 255, 255, 0.1);
-$navbar-dropdown-arrow: $blue;
+$navbar-divider-background-color: rgba(255, 255, 255, 0.2);
+
+$footer-background-color: $black-ter;

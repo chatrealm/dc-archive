@@ -1,5 +1,37 @@
 .navbar {
-	.hero-head & {
-		background: transparent;
+	&.is-transparent {
+		background-color: transparent;
+	}
+	.navbar-burger:hover {
+		background-color: $navbar-item-hover-background-color;
 	}
 }
+
+/*
+.navbar {
+	background-color: $body-background-color;
+	border: 1px solid $grey-darker;
+
+	.navbar-item,
+	.navbar-link {
+	  color: $white;
+
+	  &.has-dropdown:hover .navbar-link,
+	  &:hover {
+		color: $white-ter !important;
+		background-color: rgba($white, 0.03);
+	  }
+
+	  &.is-active,
+	  &:active {
+		background-color: rgba($white, 0.05);
+		color: $primary;
+	  }
+	}
+
+	.navbar-dropdown {
+	  background-color: $body-background-color;
+	  border: 1px solid $grey-darker;
+	}
+}
+*/

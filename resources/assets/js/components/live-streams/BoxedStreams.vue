@@ -3,7 +3,7 @@
 		<div class="columns is-multiline" v-if="!loading">
 			<div class="column is-one-third" v-for="show in shows" :key="show.id">
 				<a class="live-stream-box">
-					<p class="title is-4">{{ show.name }}</p>
+					<p class="live-stream-title">{{ show.name }}</p>
 
 					<a class="live-stream-link"
 						target="_blank"
@@ -11,6 +11,8 @@
 						v-for="stream in show.streams"
 						:key="stream.id"
 						:href="stream.video_url">
+						<span class="tag">{{ stream.service }}</span>
+
 						{{ stream.title }}
 					</a>
 				</a>
@@ -29,6 +31,10 @@
 				const shows = {}
 
 				this.config.streams.data.forEach(stream => {
+					if (stream.state !== 'live') {
+						return;
+					}
+
 					const show_id = stream.show_id
 					if (!shows[show_id]) {
 						const show_data = stream.show.data
