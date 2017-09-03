@@ -1,5 +1,12 @@
 <template>
 	<div>
+		<div class="columns is-centered" v-if="loading">
+			<div class="column is-half is-narrow">
+				<div class="control is-loading">
+					Loading Streams...
+				</div>
+			</div>
+		</div>
 		<div class="columns is-multiline" v-if="!loading">
 			<div class="column is-one-third" v-for="show in shows" :key="show.id">
 				<a class="live-stream-box">
@@ -10,13 +17,13 @@
 						rel="noopener noreferrer"
 						v-for="stream in show.streams"
 						:key="stream.id"
-						:href="stream.video_url">
+						:href="stream.url">
 						<span class="tag">{{ stream.service }}</span>
-
-						{{ stream.title }}
+						<span>{{ stream.title }}</span>
 					</a>
 				</a>
 			</div>
+			<div class="column is-half" v-if="shows.length === 0">No streams are currently live</div>
 		</div>
 	</div>
 </template>
