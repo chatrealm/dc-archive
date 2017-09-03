@@ -11,6 +11,20 @@ return [
 		'required_class' => 'required',
 
 		// Override a class from a field.
+		'textarea' => [
+			'field_class' => 'textarea'
+		],
+		'file' => [
+			'wrapper_class' => '',
+			'field_class' => 'file-input'
+		],
+		'image' => [
+			'wrapper_class' => '',
+			'field_class' => 'button'
+		],
+		'select' => [
+			'field_class' => ''
+		],
 		'button' => [
 			'wrapper_class' => '',
 			'field_class' => 'button'
@@ -28,7 +42,9 @@ return [
 	'form' => 'laravel-form-builder::form',
 	'text' => 'laravel-form-builder::text',
 	'textarea' => 'laravel-form-builder::textarea',
+	'file' => 'laravel-form-builder::file',
 	'button' => 'laravel-form-builder::button',
+	'buttongroup' => 'laravel-form-builder::buttongroup',
 	'radio' => 'laravel-form-builder::radio',
 	'checkbox' => 'laravel-form-builder::checkbox',
 	'select' => 'laravel-form-builder::select',
@@ -44,6 +60,6 @@ return [
 	'default_namespace' => 'Chatrealm\DCArchive\Forms',
 
 	'custom_fields' => [
-//        'datetime' => App\Forms\Fields\Datetime::class
+		'file' => Chatrealm\DCArchive\Forms\Fields\FileType::class
 	]
 ];
