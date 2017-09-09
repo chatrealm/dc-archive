@@ -1,7 +1,7 @@
 import path from 'path'
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import ManifestPlugin from 'webpack-manifest-plugin'
+import WebpackAssetsManifest from 'webpack-assets-manifest'
 import webpack from 'webpack'
 
 const babelSettings = {
@@ -40,8 +40,8 @@ export default function ({
 		},
 		output: {
 			filename: prod ? '[name].[chunkhash].bundle.js' : '[name].js',
-			path: path.resolve(__dirname, './public/assets'),
-			publicPath: '/assets/',
+			path: path.resolve(__dirname, './public/build'),
+			publicPath: '/build/',
 			chunkFilename: prod ? '[name].[id].[chunkhash].js' : '[name].[id].js'
 		},
 		resolve: {
@@ -102,6 +102,16 @@ export default function ({
 			new webpack.DefinePlugin(define)
 		]).concat(prod ? [
 			// Production Plugins
+			new WebpackAssetsManifest({
+				output: '../mix-manifest.json',
+				publicPath: true,
+				customize(key, value, originalValue, manifest) {
+					return {
+						key: manifest.getPublicPath(key),
+						value
+					}
+				}
+			})
 		] : [
 			// Development Plugins
 		])

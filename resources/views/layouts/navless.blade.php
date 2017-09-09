@@ -12,7 +12,7 @@
 
 	<!-- Styles -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link href="{{ elixir('assets/app.css') }}" rel="stylesheet" />
+	<link href="{{ mix('/build/app.css') }}" rel="stylesheet" />
 </head>
 <body class="no-js">
 	<div id="app">
@@ -28,6 +28,6 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ elixir('assets/app.js') }}"></script>
+	<script src="{{ mix('/build/app.js') }}"></script>
 </body>
 </html>
