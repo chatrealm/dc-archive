@@ -12,7 +12,8 @@
         "cviebrock/eloquent-sluggable": "^4.2",
         "guzzlehttp/guzzle": "~6.0",
         "szykra/laravel-flash-notifications": "^0.3.3",
-        "kevinrob/guzzle-cache-middleware": "^1.4"
+        "kevinrob/guzzle-cache-middleware": "^1.4",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
