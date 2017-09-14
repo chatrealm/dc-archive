@@ -10,7 +10,7 @@
 				<h1 class="title is-1">Welcome To The Diamond Club</h1>
 				<p class="subtitle is-2">Why not watch something live...</p>
 
-				<live-streams-boxed config-url="http://livehub.app/live/config" />
+				<live-streams-boxed config-url="http://live.dctv.t2t2.eu/live/config" />
 			</div>
 		</div>
 	</section>
