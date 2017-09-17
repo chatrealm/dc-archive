@@ -1,15 +1,18 @@
 <template>
 	<div>
-		<div class="columns is-centered" v-if="loading">
+		<div class="columns is-centered" v-if="loading || error">
 			<div class="column is-half is-narrow">
-				<div class="control is-loading">
+				<div class="control is-loading" v-if="loading">
 					Loading Streams...
 				</div>
+				<template v-else>
+					Error: {{ error }}
+				</template>
 			</div>
 		</div>
-		<div class="columns is-multiline" v-if="!loading">
+		<div class="columns is-multiline" v-else>
 			<div class="column is-one-third" v-for="show in shows" :key="show.id">
-				<a class="live-stream-box">
+				<a class="live-stream-box" :href="livehubUrl + '/#/' + show.slug">
 					<p class="live-stream-title">{{ show.name }}</p>
 
 					<a class="live-stream-link"
@@ -33,6 +36,9 @@
 
 	export default {
 		computed: {
+			configUrl() {
+				return this.livehubUrl + '/live/config';
+			},
 			shows() {
 				const result = []
 				const shows = {}
@@ -63,6 +69,7 @@
 						data: []
 					}
 				},
+				error: null,
 				loading: true
 			}
 		},
@@ -71,13 +78,19 @@
 		},
 		methods: {
 			async getData() {
-				const res = await axios.get(this.configUrl)
-				this.config = res.data
+				this.loading = true
+				this.error = null
+				try {
+					const res = await axios.get(this.configUrl)
+					this.config = res.data
+				} catch(err) {
+					this.error = err.message;
+				}
 				this.loading = false
 			}
 		},
 		props: {
-			configUrl: {
+			livehubUrl: {
 				required: true,
 				type: String
 			}

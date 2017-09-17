@@ -1,29 +1,33 @@
 {
   "private": true,
   "scripts": {
+    "build": "npm-run-all build:prod",
     "build:dev": "webpack -d --progress --color",
     "build:prod": "webpack -p --progress --color --env.prod 1",
     "watch:dev": "webpack -d --progress --color --watch"
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "bulma": "^0.5.1",
+    "bulma": "^0.5.2",
     "google-material-color": "^1.3.1",
-    "vue": "^2.4.2"
+    "vue": "^2.4.4"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
+    "autoprefixer": "^7.1.4",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.26.0",
-    "css-loader": "^0.28.5",
+    "css-loader": "^0.28.7",
     "exports-loader": "^0.6.4",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "imports-loader": "^0.7.1",
     "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
     "postcss-flexbugs-fixes": "^3.2.0",
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
@@ -31,9 +35,9 @@
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.0.4",
-    "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.4.2",
-    "webpack": "^3.5.5",
+    "vue-style-loader": "^3.0.3",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
     "webpack-assets-manifest": "^1.0.0"
   }
 }

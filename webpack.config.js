@@ -1,45 +1,17 @@
-import path from 'path'
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const WebpackAssetsManifest = require('webpack-assets-manifest')
+const webpack = require('webpack')
 
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import WebpackAssetsManifest from 'webpack-assets-manifest'
-import webpack from 'webpack'
-
-const babelSettings = {
-	babelrc: false,
-	presets: [
-		['env', {
-			targets: {
-				browsers: '> 1%, last 2 versions, Firefox ESR'
-			},
-			modules: false
-		}]
-	],
-	plugins: ['transform-runtime']
-}
-
-const defaultDefine = {
-	'typeof window': JSON.stringify('object'),
-}
-
-const prodDefine = {
-	'process.env.NODE_ENV': JSON.stringify('production')
-}
-
-const devDefine = {
-	'process.env.NODE_ENV': JSON.stringify('development')
-}
-
-export default function ({
+module.exports = ({
 	prod = false
-} = {}) {
-	const define = Object.assign({}, defaultDefine, prod ? prodDefine : devDefine)
-
+} = {}) => {
 	return {
 		entry: {
 			app: ['./resources/assets/js/app.js', './resources/assets/sass/app.scss']
 		},
 		output: {
-			filename: prod ? '[name].[chunkhash].bundle.js' : '[name].js',
+			filename: prod ? '[name].[chunkhash].js' : '[name].js',
 			path: path.resolve(__dirname, './public/build'),
 			publicPath: '/build/',
 			chunkFilename: prod ? '[name].[id].[chunkhash].js' : '[name].[id].js'
@@ -47,7 +19,7 @@ export default function ({
 		resolve: {
 			alias: {
 				// Include template compiler
-				vue$: 'vue/dist/vue.js'
+				vue$: 'vue/dist/vue.esm.js'
 			},
 			extensions: [".js", ".vue"]
 		},
@@ -55,21 +27,12 @@ export default function ({
 			rules: [
 				{ // vue files
 					test: /\.vue$/,
-					loader: 'vue-loader',
-					options: {
-						loaders: {
-							js: [{
-								loader: 'babel-loader',
-								options: babelSettings
-							}]
-						}
-					}
+					loader: 'vue-loader'
 				},
 				{ // JS
 					test: /\.js$/,
 					exclude: /node_modules/,
-					loader: 'babel-loader',
-					options: babelSettings
+					loader: 'babel-loader'
 				},
 				{ // Sass
 					test: /\.scss$/,
@@ -99,7 +62,12 @@ export default function ({
 		plugins: ([
 			// Global Plugins
 			new ExtractTextPlugin(prod ? '[name].[contenthash].css' : '[name].css'),
-			new webpack.DefinePlugin(define)
+			new webpack.DefinePlugin({
+				'typeof window': JSON.stringify('object'),
+				'process.env': {
+					NODE_ENV: JSON.stringify(prod ? 'production' : 'development')
+				}
+			})
 		]).concat(prod ? [
 			// Production Plugins
 			new WebpackAssetsManifest({

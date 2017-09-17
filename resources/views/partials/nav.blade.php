@@ -18,10 +18,10 @@
 			<div class="navbar-end">
 				<hr class="navbar-divider is-block-touch">
 				@if (Auth::guest())
-					<?php /*
-					<a class="navbar-item" href="{{ url('/login') }}">Login</a>
-					<a class="navbar-item" href="{{ url('/register') }}">Register</a>
-					*/ ?>
+					@if (config('dctv.show_login'))
+						<a class="navbar-item" href="{{ url('/login') }}">Login</a>
+						<a class="navbar-item" href="{{ url('/register') }}">Register</a>
+					@endif
 				@else
 					<div class="navbar-item">
 						{{ Auth::user()->username }}

@@ -19,7 +19,7 @@
 				<h1 class="title is-1">Welcome To The Diamond Club</h1>
 				<p class="subtitle is-2">Why not watch something live...</p>
 
-				<live-streams-boxed config-url="http://live.dctv.t2t2.eu/live/config" />
+				<live-streams-boxed livehub-url="{{ config('dctv.livehub') }}" />
 			</div>
 		</div>
 	</section>
@@ -38,6 +38,11 @@
 						@endforelse
 					</div>
 					<div class="column is-one-third">
+						<h3 class="title is-4">Join The Conversation</h3>
+						<a href="http://irc.chatrealm.net" class="multiline-box">
+							<div class="multiline-box-title">IRC</div>
+							<div class="multiline-box-tagline">irc.chatrealm.net #chat</div>
+						</a>
 					</div>
 				</div>
 			</div>
