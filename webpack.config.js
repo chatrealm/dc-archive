@@ -82,6 +82,16 @@ module.exports = ({
 			})
 		] : [
 			// Development Plugins
+			new WebpackAssetsManifest({
+				output: '../mix-manifest.json',
+				publicPath: true,
+				customize(key, value, originalValue, manifest) {
+					return {
+						key: manifest.getPublicPath(key),
+						value
+					}
+				}
+			})
 		])
 	}
 }

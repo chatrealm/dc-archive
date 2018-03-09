@@ -7,15 +7,6 @@
 		</div>
 		<div class="hero-body">
 			<div class="container">
-				<article class="message is-warning">
-					<div class="message-header">
-						<p><em>Wooooooooooooosh---</em> <a href="https://giphy.com/gifs/thetick-the-tick-3o7qiQwkN8El1GcePe" target="_blank">Bam!</a></p>
-					</div>
-					<div class="message-body">
-						Ooph that was quite a rough landing. While we're reattaching bits and pieces that fell off, you can already start using dctv v3!
-					</div>
-				</article>
-
 				<h1 class="title is-1">Welcome To The Diamond Club</h1>
 				<p class="subtitle is-2">Why not watch something live...</p>
 
@@ -42,6 +33,14 @@
 						<a href="http://irc.chatrealm.net" class="multiline-box">
 							<div class="multiline-box-title">IRC</div>
 							<div class="multiline-box-tagline">irc.chatrealm.net #chat</div>
+						</a>
+						<a href="https://discordapp.com/invite/0vQgQWIkKVUryD0z" class="multiline-box">
+							<div class="multiline-box-title">Discord</div>
+							<div class="multiline-box-tagline">It's kinda like IRC</div>
+						</a>
+						<a href="https://calendar.google.com/calendar/b/0?cid=YTVqZWI5dDVldGFzcmJsNmR0NWh0a3Y0dG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" class="multiline-box">
+							<div class="multiline-box-title">Calendar</div>
+							<div class="multiline-box-tagline">Be aware. Be very aware.</div>
 						</a>
 					</div>
 				</div>

@@ -1,0 +1,7 @@
+.multiline-box {
+	display: block;
+
+	& + & {
+		margin-top: 1rem;
+	}
+}
