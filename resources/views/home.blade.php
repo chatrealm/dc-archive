@@ -38,7 +38,7 @@
 							<div class="multiline-box-title">Discord</div>
 							<div class="multiline-box-tagline">It's kinda like IRC</div>
 						</a>
-						<a href="https://calendar.google.com/calendar/b/0?cid=YTVqZWI5dDVldGFzcmJsNmR0NWh0a3Y0dG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" class="multiline-box">
+						<a href="https://calendar.google.com/calendar/embed?src=a5jeb9t5etasrbl6dt5htkv4to%40group.calendar.google.com" class="multiline-box">
 							<div class="multiline-box-title">Calendar</div>
 							<div class="multiline-box-tagline">Be aware. Be very aware.</div>
 						</a>
