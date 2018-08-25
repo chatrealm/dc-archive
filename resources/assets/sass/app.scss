@@ -1,6 +1,16 @@
-@import "~google-material-color/dist/palette";
 @import "bulma";
 
 @import "components/live_stream_box";
 @import "components/multiline_box";
 @import "components/responsive_embed";
+
+/* To make sure sticky footer can happen */
+.app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	& > .app-content {
+		flex: 1;
+	}
+}

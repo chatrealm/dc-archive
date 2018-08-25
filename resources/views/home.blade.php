@@ -3,7 +3,7 @@
 @section('content')
 	<section class="hero is-primary is-bold">
 		<div class="hero-head">
-			@include('partials.nav', ['navclass' => 'is-transparent'])
+			@include('partials.nav')
 		</div>
 		<div class="hero-body">
 			<div class="container">
@@ -15,6 +15,7 @@
 		</div>
 	</section>
 
+	<div class="app-content">
 		<section class="section">
 			<div class="container">
 				<h2 class="title is-3">Or enjoy something else</h2>
@@ -46,5 +47,6 @@
 				</div>
 			</div>
 		</section>
+	</div>
 
 @endsection

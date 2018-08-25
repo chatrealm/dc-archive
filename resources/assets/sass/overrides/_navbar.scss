@@ -1,37 +1,50 @@
-.navbar {
-	&.is-transparent {
-		background-color: transparent;
-	}
-	.navbar-burger:hover {
-		background-color: $navbar-item-hover-background-color;
+.navbar-item.has-dropdown.is-active {
+	.navbar-link::after {
+		transform: rotate(135deg) translate(0.25em, -0.25em);
 	}
 }
 
-/*
-.navbar {
-	background-color: $body-background-color;
-	border: 1px solid $grey-darker;
-
-	.navbar-item,
-	.navbar-link {
-	  color: $white;
-
-	  &.has-dropdown:hover .navbar-link,
-	  &:hover {
-		color: $white-ter !important;
-		background-color: rgba($white, 0.03);
-	  }
-
-	  &.is-active,
-	  &:active {
-		background-color: rgba($white, 0.05);
-		color: $primary;
-	  }
-	}
-
-	.navbar-dropdown {
-	  background-color: $body-background-color;
-	  border: 1px solid $grey-darker;
+@include touch {
+	.navbar-link::after {
+		display: block;
 	}
 }
-*/
+
+.navbar {
+	@each $name, $pair in $colors {
+		$color: nth($pair, 1);
+		$bg-color: darken($color, 5%);
+
+		&.is-#{$name} {
+			.navbar-item {
+				color: inherit;
+			}
+			@include desktop {
+				a.navbar-item,
+				.navbar-link {
+					background: transparent linear-gradient(
+						transparent 50%,
+						transparent
+					);
+
+					&:hover:not(.is-active),
+					&.is-active:not(.is-fullheight-bg) {
+						background: transparent linear-gradient(
+							$bg-color 50%,
+							transparent
+						)
+					}
+					&:hover.is-active.is-fullheight-bg {
+						background: $bg-color linear-gradient(
+							$bg-color 50%,
+							$bg-color
+						)
+					}
+				}
+			}
+			.outside-navbar-wrapper {
+				background: $bg-color;
+			}
+		}
+	}
+}

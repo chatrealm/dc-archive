@@ -14,7 +14,7 @@
 	<link href="{{ mix('/build/app.css') }}" rel="stylesheet">
 </head>
 <body class="no-js">
-	<div id="app" class="hero is-fullheight">
+	<div id="app" class="hero is-primary is-fullheight">
 		<div class="hero-head">
 			@include('partials.nav')
 		</div>

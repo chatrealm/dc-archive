@@ -3,5 +3,7 @@
 @section('content')
 	@include('partials.nav')
 
-	@yield('content')
+	<div class="app-content">
+		@yield('content')
+	</div>
 @overwrite

@@ -11,11 +11,11 @@
 	<title>{{ config('app.name', 'Diamond Club') }}</title>
 
 	<!-- Styles -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link href="{{ mix('/build/app.css') }}" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 <body class="no-js">
-	<div id="app">
+	<div id="app" class="app">
 		@yield('content')
 
 		<footer class="footer">

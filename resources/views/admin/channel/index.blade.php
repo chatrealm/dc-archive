@@ -42,12 +42,12 @@
 					<td>{{ $channel->id }}</td>
 					<td>{{ $channel->name }}</td>
 					<td><a href="{{ $channel->url }}">Youtube</a></td>
-					<td class="is-link is-icon">
+					<td class="is-icon">
 						<a href="{{ route('admin.channel.show', ['channel' => $channel->id]) }}" title="Info">
 							<span class="icon"><i class="material-icons">description</i></span>
 						</a>
 					</td>
-					<td class="is-link is-icon">
+					<td class="is-icon">
 						<a href="{{ route('admin.channel.edit', ['channel' => $channel->id]) }}" title="Edit">
 							<span class="icon"><i class="material-icons">edit</i></span>
 						</a>
