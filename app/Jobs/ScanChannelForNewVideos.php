@@ -60,7 +60,7 @@ class ScanChannelForNewVideos implements ShouldQueue {
 	 * Scan youtube for videos
 	 *
 	 * @return \Illuminate\Support\Collection[]
-	 **/
+	 */
 	protected function scanYoutube() {
 		$client = app('youtube.client');
 
@@ -135,7 +135,7 @@ class ScanChannelForNewVideos implements ShouldQueue {
 	 * @param \Illuminate\Support\Collection $resultsToBeProcessed Youtube results that should be processed
 	 * @param \Illuminate\Support\Collection $alreadyInDatabase Items already found in database, keyed by youtube ID
 	 * @return \Illuminate\Support\Collection Things left to be added
-	 **/
+	 */
 	public function processAlreadyExisting($resultsToBeProcessed, $alreadyInDatabase) {
 		$toBeAdded = $resultsToBeProcessed->reject(function($youtubeVideo) use($alreadyInDatabase) {
 			if ($alreadyInDatabase->has($youtubeVideo->snippet->resourceId->videoId)) {
@@ -162,7 +162,7 @@ class ScanChannelForNewVideos implements ShouldQueue {
 	 * @param \Illuminate\Support\Collection $youtubeVideos Youtube videos to add
 	 *
 	 * @return void
-	 **/
+	 */
 	public function addMissingVideos($youtubeVideos) {
 		$client = app('youtube.client');
 		// Add in reverse order to maintain order
@@ -196,7 +196,7 @@ class ScanChannelForNewVideos implements ShouldQueue {
 	 *
 	 * @param string $duration Description
 	 * @return int
-	 **/
+	 */
 	protected function durationToSeconds($duration) {
 		$start = Carbon::createFromTimestamp(0);
 		$start->add(new DateInterval($duration));

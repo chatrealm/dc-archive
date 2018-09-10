@@ -27,7 +27,7 @@ class VideoController extends Controller {
 	 * @param \Chatrealm\DCArchive\Models\Video $video
 	 *
 	 * @return \Illuminate\Http\Response
-	 **/
+	 */
 	public function show(Video $video) {
 		return view('video', ['video' => $video]);
 	}

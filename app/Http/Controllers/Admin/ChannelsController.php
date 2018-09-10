@@ -72,7 +72,7 @@ class ChannelsController extends Controller {
 	 *
 	 * @param \Chatrealm\DCArchive\Models\Channel $channel
 	 * @return void
-	 **/
+	 */
 	protected function setYoutubeInfo(Channel $channel) {
 		// Get channel info
 		$youtubeChannel = $this->getChannelFromYoutube($channel->youtube_id);

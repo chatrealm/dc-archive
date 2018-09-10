@@ -20,7 +20,6 @@ class ResetPasswordForm extends Form {
 					'class' => 'button is-primary'
 				]
 			]);
-
 	}
 
 }

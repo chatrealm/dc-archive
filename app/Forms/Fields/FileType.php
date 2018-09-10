@@ -8,4 +8,5 @@ class FileType extends InputType {
 	protected function getTemplate() {
 		return 'file';
 	}
+
 }

@@ -67,7 +67,7 @@ class Channel extends Model {
 	 * Get the route key for the model
 	 *
 	 * @return string
-	 **/
+	 */
 	public function getRouteKeyName() {
 		return 'slug';
 	}
@@ -85,7 +85,7 @@ class Channel extends Model {
 	 * Get uploads playlist URL
 	 *
 	 * @return string
-	 **/
+	 */
 	public function getPlaylistUrlAttribute() {
 		return 'https://www.youtube.com/playlist?list=' . $this->uploads_playlist;
 	}

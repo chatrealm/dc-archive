@@ -5,6 +5,7 @@ namespace Chatrealm\DCArchive\Http\Controllers\Auth;
 use Chatrealm\DCArchive\Http\Controllers\Controller;
 use Chatrealm\DCArchive\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
@@ -75,7 +76,7 @@ class RegisterController extends Controller {
 		return User::create([
 			'username' => $data['username'],
 			'email' => $data['email'],
-			'password' => bcrypt($data['password']),
+			'password' => Hash::make($data['password']),
 		]);
 	}
 

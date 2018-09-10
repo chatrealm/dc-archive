@@ -74,7 +74,7 @@ class Video extends Model {
 	 * Channel this video belongs to
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 **/
+	 */
 	public function channel() {
 		return $this->belongsTo(Channel::class);
 	}
@@ -83,7 +83,7 @@ class Video extends Model {
 	 * Get the route key for the model
 	 *
 	 * @return string
-	 **/
+	 */
 	public function getRouteKeyName() {
 		return 'slug';
 	}

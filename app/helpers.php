@@ -4,7 +4,7 @@
  *
  * @param int $seconds Description
  * @return string
- **/
+ */
 function secondsToHuman($seconds) {
 	$hours = floor($seconds / (60 * 60));
 	$seconds -= $hours * 60 * 60;

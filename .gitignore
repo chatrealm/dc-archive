@@ -1,11 +1,15 @@
 /node_modules
-/public/mix-manifest.json
+/public/hot
 /public/storage
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 /.idea
 /.vscode
+/.vagrant
 Homestead.json
 Homestead.yaml
+npm-debug.log
+yarn-error.log
 .env
-npm-debug.log*
+.phpunit.result.cache
