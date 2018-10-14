@@ -2,8 +2,10 @@
 
 namespace Chatrealm\DCArchive\Models;
 
+use Chatrealm\DCArchive\Observers\ChannelObserver;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Chatrealm\DCArchive\Models\Channel
@@ -51,6 +53,15 @@ class Channel extends Model {
 	];
 
 	/**
+	 * @return void
+	 */
+	public static function boot() {
+		parent::boot();
+
+		static::observe(ChannelObserver::class);
+	}
+
+	/**
 	 * Sluggable configuration for the model
 	 *
 	 * @return array
@@ -88,6 +99,41 @@ class Channel extends Model {
 	 */
 	public function getPlaylistUrlAttribute() {
 		return 'https://www.youtube.com/playlist?list=' . $this->uploads_playlist;
+	}
+
+	/**
+	 * Set youtube ID
+	 *
+	 * Checks if channel with ID exists and update playlist ID
+	 *
+	 * @param string $value
+	 * @return void
+	 */
+	public function setYoutubeIdAttribute($value) {
+		if ($this->originalIsEquivalent('youtube_id', $value)) {
+			return;
+		}
+
+		// Get channel info
+		$client = app('youtube.client');
+
+		$response = $client->get('channels', [
+			'query' => [
+				'part' => 'contentDetails',
+				'id' => $value,
+				'fields' => 'items(contentDetails/relatedPlaylists/uploads,id)'
+			]
+		]);
+		$youtubeChannel = json_decode($response->getBody());
+
+		if (count($youtubeChannel->items) === 0) {
+			throw ValidationException::withMessages([
+				'youtube_id' => ['Invalid channel']
+			]);
+		}
+		$channel = $youtubeChannel->items[0];
+		$this->attributes['youtube_id'] = $value;
+		$this->attributes['uploads_playlist'] = $channel->contentDetails->relatedPlaylists->uploads;
 	}
 
 }

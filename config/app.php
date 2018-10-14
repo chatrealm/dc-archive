@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'name' => 'Diamond Club',
+	'name' => env('APP_NAME', 'Diamond Club TV'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -150,10 +150,6 @@ return [
 		/*
 		 * Package Service Providers...
 		 */
-
-		Cviebrock\EloquentSluggable\ServiceProvider::class,
-		Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
-		Szykra\Notifications\NotificationServiceProvider::class,
 
 		/*
 		 * Application Service Providers...

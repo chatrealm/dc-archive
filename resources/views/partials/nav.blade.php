@@ -1,5 +1,5 @@
 <nav-bar inline-template>
-	<nav class="navbar is-primary {{ $navclass or '' }}">
+	<nav class="navbar is-primary {{ $navclass ?? '' }}">
 		<div class="container">
 			<div class="navbar-brand">
 				<a href="{{ route('home') }}" class="navbar-item{{ Route::is('home') ? ' is-active' : '' }}">
@@ -28,7 +28,7 @@
 							{{ Auth::user()->username }}
 						</div>
 						@can ('is-admin')
-							<a href="{{ route('admin.index') }}" class="navbar-item{{ Route::is('admin.**') ? ' is-active' : '' }}">Admin</a>
+							<a href="{{ route('code16.sharp.dashboard') }}" class="navbar-item">Admin</a>
 						@endcan
 						<a href="{{ route('logout') }}" class="navbar-item"
 							onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

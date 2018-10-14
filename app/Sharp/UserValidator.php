@@ -1,11 +1,10 @@
 <?php
-
-namespace Chatrealm\DCArchive\Http\Requests\CRUD;
+namespace Chatrealm\DCArchive\Sharp;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreChannel extends FormRequest {
+class UserValidator extends FormRequest {
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -21,17 +20,20 @@ class StoreChannel extends FormRequest {
 	 * @return array
 	 */
 	public function rules() {
-		$channel = $this->route('channel_id');
-
-		$uniqueRule = Rule::unique('channels');
-		if ($channel) {
-			$uniqueRule->ignore($channel->id);
-		}
-
 		return [
-			'name' => 'required|max:255',
-			'slug' => 'max:255',
-			'youtube_id' => ['required', 'max:32', $uniqueRule]
+			'username' => [
+				'required',
+				'alpha_dash',
+				'max:32',
+				Rule::unique('users')->ignore($this->route('instanceId'))
+			],
+			'email' => [
+				'required',
+				'email',
+				'max:255',
+				Rule::unique('users')->ignore($this->route('instanceId'))
+			],
+			'is_admin' => ['boolean']
 		];
 	}
 
