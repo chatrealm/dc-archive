@@ -3,6 +3,10 @@
 use Chatrealm\DCArchive\Policies\AdminPolicy;
 use Chatrealm\DCArchive\Sharp\ChannelForm;
 use Chatrealm\DCArchive\Sharp\ChannelList;
+use Chatrealm\DCArchive\Sharp\ChannelValidator;
+use Chatrealm\DCArchive\Sharp\PageForm;
+use Chatrealm\DCArchive\Sharp\PageList;
+use Chatrealm\DCArchive\Sharp\PageValidator;
 use Chatrealm\DCArchive\Sharp\UserForm;
 use Chatrealm\DCArchive\Sharp\UserList;
 use Chatrealm\DCArchive\Sharp\UserValidator;
@@ -17,7 +21,13 @@ return [
 	'entities' => [
 		'channel' => [
 			'list' => ChannelList::class,
-			'form' => ChannelForm::class
+			'form' => ChannelForm::class,
+			'validator' => ChannelValidator::class,
+		],
+		'page' => [
+			'list' => PageList::class,
+			'form' => PageForm::class,
+			'validator' => PageValidator::class
 		],
 		'user' => [
 			'list' => UserList::class,
@@ -36,6 +46,10 @@ return [
 				'channel' => [
 					'label' => 'Channels',
 					'icon' => 'fa-television'
+				],
+				'page' => [
+					'label' => 'Pages',
+					'icon' => 'fa-file-text'
 				]
 			]
 		],

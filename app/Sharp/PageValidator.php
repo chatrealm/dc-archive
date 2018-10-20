@@ -1,10 +1,10 @@
 <?php
 namespace Chatrealm\DCArchive\Sharp;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Code16\Sharp\Form\Validator\SharpFormRequest;
 use Illuminate\Validation\Rule;
 
-class ChannelValidator extends FormRequest {
+class PageValidator extends SharpFormRequest {
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -28,7 +28,7 @@ class ChannelValidator extends FormRequest {
 		 }
 
 		return [
-			'name' => [
+			'title' => [
 				'required',
 				'max:255',
 			],
@@ -37,10 +37,10 @@ class ChannelValidator extends FormRequest {
 				'max:255',
 				$uniqueRule
 			],
-			'youtube_id' => [
-				'required',
-				'max:32',
-				$uniqueRule
+			'content' => [
+				'nullable',
+				'string',
+				'max:2097152'
 			]
 		];
 	}

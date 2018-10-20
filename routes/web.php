@@ -16,4 +16,5 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('browse', 'VideoController@index')->name('browse');
+Route::get('p/{page}', 'PageController@show')->name('page.show');
 Route::get('video/{video}', 'VideoController@show')->name('video');
