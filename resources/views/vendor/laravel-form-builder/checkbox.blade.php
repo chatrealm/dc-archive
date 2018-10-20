@@ -1,7 +1,7 @@
 @component('laravel-form-builder::base', $__data)
 	@if ($showField)
 		@if ($showLabel && $options['label'] !== false && $options['label_show'])
-			<label for="{{ $name }}" {!! $options['labelAttrs'] or Html::attributes($options['label_attr']) !!}>
+			<label for="{{ $name }}" {!! Html::attributes($options['label_attr']) !!}>
 		@endif
 		@if ($showField)
 			<?= Form::checkbox($name, $options['value'], $options['checked'], $options['attr']) ?>
