@@ -4,7 +4,7 @@ namespace Chatrealm\DCArchive\Sharp;
 use Code16\Sharp\Form\Validator\SharpFormRequest;
 use Illuminate\Validation\Rule;
 
-class PageValidator extends SharpFormRequest {
+class PersonValidator extends SharpFormRequest {
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -22,13 +22,16 @@ class PageValidator extends SharpFormRequest {
 	public function rules() {
 		$id = $this->route('instanceId');
 
-		$uniqueRule = Rule::unique('channels');
+		$uniqueRule = Rule::unique('people');
 		if ($id) {
 			$uniqueRule->ignore($id);
 		}
 
+		/** @var \Chatrealm\DCArchive\Services\ServicesManager $services */
+		$services = resolve(ServicesManager::class);
+
 		return [
-			'title' => [
+			'name' => [
 				'required',
 				'max:255',
 			],
@@ -37,12 +40,27 @@ class PageValidator extends SharpFormRequest {
 				'max:255',
 				$uniqueRule
 			],
-			'content' => [
+			'about' => [
 				'nullable',
-				'string',
-				'max:2097152'
+				'string'
+			],
+			'tier' => [
+				'nullable',
+				Rule::in(array_keys(config('dctv.people_tiers')))
+			],
+			'links' => ['array'],
+			'links.*.service' => [
+				'nullable',
+				Rule::in($services->availableServicesKeys())
+			],
+			'links.*.label' => [
+				'nullable',
+				'string'
+			],
+			'links.*.service_data' => [
+				'required'
 			]
 		];
 	}
-
 }
+
