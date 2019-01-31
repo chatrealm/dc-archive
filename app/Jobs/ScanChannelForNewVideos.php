@@ -70,7 +70,6 @@ class ScanChannelForNewVideos implements ShouldQueue {
 			'part' => 'snippet',
 			'playlistId' => $this->channel->uploads_playlist
 		];
-		$nextPageToken = null;
 		$initial = true;
 		$resultsToBeProcessed = collect();
 		$alreadyInDatabase = collect();

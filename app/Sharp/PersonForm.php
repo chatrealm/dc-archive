@@ -87,7 +87,7 @@ class PersonForm extends SharpForm {
 			$column->withSingleField('tier');
 		});
 		$this->addColumn(12, function (FormLayoutColumn $column) {
-			$column->withSingleField('links', function(FormLayoutColumn $listItem) {
+			$column->withSingleField('links', function (FormLayoutColumn $listItem) {
 				$listItem->withFields('service|4', 'service_data|4', 'label|4');
 			});
 		});
