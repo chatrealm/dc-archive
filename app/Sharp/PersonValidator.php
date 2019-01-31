@@ -62,5 +62,5 @@ class PersonValidator extends SharpFormRequest {
 			]
 		];
 	}
-}
 
+}

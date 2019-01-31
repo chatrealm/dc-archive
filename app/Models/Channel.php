@@ -10,25 +10,28 @@ use Illuminate\Validation\ValidationException;
 /**
  * Chatrealm\DCArchive\Models\Channel
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $slug
  * @property string $youtube_id
  * @property string $uploads_playlist
- * @property \Carbon\Carbon $last_updated
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property-read mixed $url
- * @property-read mixed $playlist_url
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel whereName($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel whereSlug($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel whereYoutubeId($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel whereUploadsPlaylist($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel whereLastUpdated($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Channel findSimilarSlugs($model, $attribute, $config, $slug)
+ * @property \Illuminate\Support\Carbon|null $last_updated
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read string $playlist_url
+ * @property-read string $url
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel findSimilarSlugs($attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel whereLastUpdated($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel whereUploadsPlaylist($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Channel whereYoutubeId($value)
  * @mixin \Eloquent
  */
 class Channel extends Model {

@@ -8,31 +8,34 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Chatrealm\DCArchive\Models\Video
  *
- * @property integer $id
+ * @property int $id
  * @property string $title
  * @property string $slug
  * @property string $description
- * @property \Carbon\Carbon $published_at
- * @property \Carbon\Carbon $recorded_at
+ * @property \Illuminate\Support\Carbon|null $published_at
+ * @property \Illuminate\Support\Carbon|null $recorded_at
  * @property string $youtube_id
- * @property integer $channel_id
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property integer $duration
- * @property-read \Chatrealm\DCArchive\Models\Channel $channel
- * @property-read mixed $thumbnail
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereTitle($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereSlug($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereDescription($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video wherePublishedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereRecordedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereYoutubeId($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereChannelId($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video whereDuration($value)
- * @method static \Illuminate\Database\Query\Builder|\Chatrealm\DCArchive\Models\Video findSimilarSlugs($model, $attribute, $config, $slug)
+ * @property int|null $channel_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $duration
+ * @property-read \Chatrealm\DCArchive\Models\Channel|null $channel
+ * @property-read string $thumbnail
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video findSimilarSlugs($attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereChannelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereDuration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereRecordedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\Video whereYoutubeId($value)
  * @mixin \Eloquent
  */
 class Video extends Model {
