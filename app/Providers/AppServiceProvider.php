@@ -3,6 +3,7 @@
 namespace Chatrealm\DCArchive\Providers;
 
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
@@ -23,7 +24,9 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot() {
-		//
+		Blade::directive('json_attr', function ($expression) {
+			return "<?php echo e(json_encode($expression)); ?>";
+		});
 	}
 
 }

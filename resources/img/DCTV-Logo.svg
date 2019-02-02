@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="DCTV-2016-Logo.fw-Page%201"
+   viewBox="0 0 1920 916"
+   version="1.1"
+   xml:space="preserve"
+   x="0px"
+   y="0px"
+   width="1920"
+   height="916"><metadata
+   id="metadata22"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs20" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1137"
+   inkscape:window-height="732"
+   id="namedview18"
+   showgrid="false"
+   inkscape:snap-bbox="true"
+   inkscape:zoom="0.21139546"
+   inkscape:cx="610.98548"
+   inkscape:cy="651.56185"
+   inkscape:window-x="2648"
+   inkscape:window-y="247"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="DCTV-2016-Logo.fw-Page%201" />
+	<g
+   id="Layer%201"
+   transform="matrix(1.1670905,0,0,1.1668889,-164.42355,-63.01196)">
+		<path
+   d="M 1019.2811,834.3431 929.3284,610.6818 500.2224,621.4463 C 603.1337,519.3933 709.0504,420.8797 811.951,318.8311 L 723.0905,97.8853 140.8833,656.2457 l 73.498,182.7476 z"
+   id="path2"
+   style="fill:#183871" />
+		<path
+   d="m 819.7873,58.6381 88.8606,220.9458 c 144.597,1.5948 288.9083,-1.4537 433.5048,0.1412 l -316.1276,291.7095 89.9529,223.6613 201.4044,-193.155 v -24.1388 h -58.0462 V 498.309 h 58.0462 v -88.0101 h 83.5301 v 88.0101 h 24.5351 L 1698.1898,236.7477 1624.692,54 Z"
+   id="path4"
+   style="fill:#183871" />
+		<g
+   id="g10">
+			<path
+   d="m 1467.6932,512.0583 h -79.1165 v -85.787 h -58.0839 v 85.787 h -57.1397 v 49.832 h 57.1397 v 159.8921 c 0,61.2106 30.6047,92.7498 86.3397,92.7498 18.2092,0 36.4186,-3.1538 50.2326,-8.2001 l -1.8837,-48.4666 c -10.0466,4.977 -23.8604,7.4656 -34.5349,7.4656 -29.5116,0 -42.0698,-14.3089 -42.0698,-49.7699 V 561.8903 h 79.1165 z"
+   id="path6"
+   style="fill:#ffffff" />
+			<path
+   d="m 1786,511.3868 h -62.7908 l -87.9071,236.1231 h -1.2558 L 1546.767,512.2266 h -65.3026 l 121.1865,297.8388 h 64.0465 z"
+   id="path8"
+   style="fill:#ffffff" />
+		</g>
+		<g
+   id="g14">
+			<path
+   d="m 1296.4795,773.2159 c 0,-22.7523 -18.0084,-41.0817 -41.6018,-41.0817 -23.5936,0 -41.5991,18.9614 -41.5991,41.7136 0,22.1203 18.6264,41.0805 41.5991,41.0805 23.5934,0 41.6018,-19.5922 41.6018,-41.7124 z"
+   id="path12"
+   style="fill:#ffffff" />
+		</g>
+	</g>
+</svg>

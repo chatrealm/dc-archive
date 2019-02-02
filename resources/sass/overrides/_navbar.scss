@@ -11,6 +11,8 @@
 }
 
 .navbar {
+	border-radius: 0;
+
 	@each $name, $pair in $colors {
 		$color: nth($pair, 1);
 		$bg-color: darken($color, 5%);
@@ -19,24 +21,48 @@
 			.navbar-item {
 				color: inherit;
 			}
+			.navbar-brand > a.navbar-item{
+				&.is-active,
+				&:hover {
+					background: transparent linear-gradient(
+						$bg-color 0%,
+						transparent
+					);
+				}
+			}
+
+			a.navbar-item,
+			.navbar-link {
+				&:hover:not(.is-active),
+				&.is-active {
+					background: $bg-color;
+				}
+				&:hover.is-active.is-fullheight-bg {
+					background: $bg-color linear-gradient(
+						$bg-color 0%,
+						$bg-color
+					)
+				}
+			}
+
 			@include desktop {
 				a.navbar-item,
 				.navbar-link {
 					background: transparent linear-gradient(
-						transparent 50%,
+						transparent 0%,
 						transparent
 					);
 
 					&:hover:not(.is-active),
 					&.is-active:not(.is-fullheight-bg) {
 						background: transparent linear-gradient(
-							$bg-color 50%,
+							$bg-color 0%,
 							transparent
 						)
 					}
 					&:hover.is-active.is-fullheight-bg {
 						background: $bg-color linear-gradient(
-							$bg-color 50%,
+							$bg-color 0%,
 							$bg-color
 						)
 					}

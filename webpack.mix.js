@@ -11,10 +11,22 @@ const mix = require('laravel-mix')
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/build')
-mix.sass('resources/assets/sass/app.scss', 'public/build')
+mix.js('resources/js/app.js', 'public/build')
+mix.sass('resources/sass/app.scss', 'public/build')
 	.options({
 		postCss: [
 			require('postcss-flexbugs-fixes')
 		]
 	})
+mix.copyDirectory('resources/img', 'public/build/images')
+mix.version(['public/build/images'])
+
+mix.setPublicPath('public')
+mix.version()
+mix.extract()
+mix.options({
+	fileLoaderDirs: {
+		images: 'build/images',
+		fonts: 'build/fonts'
+	}
+})

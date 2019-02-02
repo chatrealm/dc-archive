@@ -11,7 +11,7 @@
 	<title>{{ config('app.name', 'Diamond Club') }}</title>
 
 	<!-- Styles -->
-	<link href="{{ mix('/build/app.css') }}" rel="stylesheet">
+	<link href="{{ mix('build/app.css') }}" rel="stylesheet">
 </head>
 <body class="no-js">
 	<div id="app" class="hero is-primary is-fullheight">
@@ -25,6 +25,8 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ mix('/build/app.js') }}"></script>
+	<script src="{{ mix('build/manifest.js') }}"></script>
+	<script src="{{ mix('build/vendor.js') }}"></script>
+	<script src="{{ mix('build/app.js') }}"></script>
 </body>
 </html>
