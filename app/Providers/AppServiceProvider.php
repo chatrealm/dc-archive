@@ -24,9 +24,13 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot() {
+		Blade::if('env', function ($environment) {
+			return app()->environment($environment);
+		});
 		Blade::directive('json_attr', function ($expression) {
 			return "<?php echo e(json_encode($expression)); ?>";
 		});
+		Blade::include('includes.icon', 'icon');
 	}
 
 }

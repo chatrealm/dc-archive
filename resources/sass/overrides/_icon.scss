@@ -1,24 +1,8 @@
 .icon {
-	.material-icons {
-		font-size: inherit;
-		line-height: inherit;
-		font-size: 21px;
-	}
-
-	&.is-small {
-		.material-icons {
-			font-size: 14px;
-		}
-	}
-	&.is-medium {
-		.material-icons {
-			font-size: 28px;
-		}
-	}
-	&.is-large {
-		.material-icons {
-			font-size: 42px;
-		}
+	& > svg {
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
 	}
 }
 .table {

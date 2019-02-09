@@ -5,12 +5,23 @@
 @import "components/responsive_embed";
 
 /* To make sure sticky footer can happen */
+html, body {
+	height: 100%;
+}
+
 .app {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+	height: 100%;
+
+	& > .hero {
+		flex-shrink: 0;
+	}
 
 	& > .app-content {
-		flex: 1;
+		flex-grow: 1;
+		flex-shrink: 0;
+		flex-basis: auto;
+		display: block;
 	}
 }

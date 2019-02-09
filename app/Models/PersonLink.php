@@ -2,6 +2,7 @@
 
 namespace Chatrealm\DCArchive\Models;
 
+use Chatrealm\DCArchive\Services\ServicesManager;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,7 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $service_data
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read mixed $url
+ * @property-read string $icon
+ * @property-read string $url
  * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\PersonLink newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\PersonLink newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Chatrealm\DCArchive\Models\PersonLink query()
@@ -28,11 +30,40 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 class PersonLink extends Model {
+
+	/**
+	 * @param string $value Current value
+	 * @return string
+	 */
+	public function getLabelAttribute($value) {
+		if ($value) {
+			return $value;
+		}
+
+		/** @var \Chatrealm\DCArchive\Services\ServicesManager $services */
+		$services = resolve(ServicesManager::class);
+
+		return $services->getLabel($this->service);
+	}
+
+	/**
+	 * @return string
+	 */
 	public function getUrlAttribute() {
 		/** @var \Chatrealm\DCArchive\Services\ServicesManager $services */
 		$services = resolve(ServicesManager::class);
 
 		return $services->getURL($this->service, $this->service_data);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIconAttribute() {
+		/** @var \Chatrealm\DCArchive\Services\ServicesManager $services */
+		$services = resolve(ServicesManager::class);
+
+		return $services->getIcon($this->service);
 	}
 
 }

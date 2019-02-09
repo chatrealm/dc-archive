@@ -10,4 +10,8 @@ class FacebookService extends BaseService {
 		return "https://www.facebook.com/{$identifier}";
 	}
 
+	public function getIcon() {
+		return 'facebook';
+	}
+
 }

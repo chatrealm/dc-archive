@@ -10,4 +10,8 @@ class TwitchService extends BaseService {
 		return "https://twitch.tv/{$identifier}";
 	}
 
+	public function getIcon() {
+		return 'twitch';
+	}
+
 }

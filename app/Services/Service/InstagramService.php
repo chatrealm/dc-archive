@@ -10,4 +10,8 @@ class InstagramService extends BaseService {
 		return "https://www.instagram.com/{$identifier}";
 	}
 
+	public function getIcon() {
+		return 'instagram';
+	}
+
 }

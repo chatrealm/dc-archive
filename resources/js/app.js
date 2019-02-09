@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import * as components from './components'
+import './icons'
 import './navbar'
 
 // configure axios instance for requests on same domain

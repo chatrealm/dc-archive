@@ -1,17 +1,17 @@
 <?php
 namespace Chatrealm\DCArchive\Services\Service;
 
-class MixerService extends BaseService {
+class HomepageService extends BaseService {
 	public function getLabel() {
-		return 'Mixer';
+		return 'Homepage';
 	}
 
 	public function getURL($identifier) {
-		return "https://mixer.com/{$identifier}";
+		return $identifier;
 	}
 
 	public function getIcon() {
-		return 'mixer';
+		return 'home';
 	}
 
 }

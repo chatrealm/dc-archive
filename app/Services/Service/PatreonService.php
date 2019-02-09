@@ -10,4 +10,8 @@ class PatreonService extends BaseService {
 		return "https://www.patreon.com/{$identifier}";
 	}
 
+	public function getIcon() {
+		return 'patreon';
+	}
+
 }

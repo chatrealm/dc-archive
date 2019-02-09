@@ -10,4 +10,8 @@ class RssFeedService extends BaseService {
 		return $identifier;
 	}
 
+	public function getIcon() {
+		return 'rss';
+	}
+
 }

@@ -3,6 +3,7 @@ namespace Chatrealm\DCArchive\Services;
 
 use Chatrealm\DCArchive\Services\Service\BaseService;
 use Chatrealm\DCArchive\Services\Service\FacebookService;
+use Chatrealm\DCArchive\Services\Service\HomepageService;
 use Chatrealm\DCArchive\Services\Service\InstagramService;
 use Chatrealm\DCArchive\Services\Service\MixerService;
 use Chatrealm\DCArchive\Services\Service\PatreonService;
@@ -20,6 +21,7 @@ class ServicesManager {
 
 	public function __construct() {
 		$this->services = [
+			'homepage' => new HomepageService(),
 			'twitter' => new TwitterService(),
 			'instagram' => new InstagramService(),
 			'facebook' => new FacebookService(),
@@ -74,6 +76,32 @@ class ServicesManager {
 			return $service->getURL($identifier);
 		}
 		return $identifier;
+	}
+
+	/**
+	 * @param string $service_id Service name
+	 * @return string
+	 */
+	public function getIcon($service_id) {
+		$service = $this->getService($service_id);
+
+		if ($service) {
+			return $service->getIcon();
+		}
+		return 'external-link-alt';
+	}
+
+	/**
+	 * @param string $service_id Service name
+	 * @return string
+	 */
+	public function getLabel($service_id) {
+		$service = $this->getService($service_id);
+
+		if ($service) {
+			return $service->getLabel();
+		}
+		return 'external-link-alt';
 	}
 
 }

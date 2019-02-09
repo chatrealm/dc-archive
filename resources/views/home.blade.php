@@ -10,7 +10,10 @@
 				<h1 class="title is-1">Welcome To The Diamond Club</h1>
 				<p class="subtitle is-2">Why not watch something live...</p>
 
-				<live-streams-boxed livehub-url="{{ config('dctv.livehub') }}" />
+				<div
+					data-component="LiveStreamsBoxed"
+					data-props="@json_attr(['livehubUrl' => config('dctv.livehub')])"
+				></div>
 			</div>
 		</div>
 	</section>

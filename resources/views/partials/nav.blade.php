@@ -3,6 +3,9 @@
 		<div class="navbar-brand">
 			<a href="{{ route('home') }}" class="navbar-item{{ Route::is('home') ? ' is-active' : '' }}">
 				<img src="{{ mix('build/images/DCTV-Logo.svg') }}" alt="DiamondClub.tv">
+				@env('local')
+				<span class="has-text-warning">dev</span>
+				@endenv
 			</a>
 
 			<div class="navbar-burger" data-target="nav-main-menu">

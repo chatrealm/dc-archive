@@ -10,4 +10,8 @@ class TwitterService extends BaseService {
 		return "https://twitter.com/{$identifier}";
 	}
 
+	public function getIcon() {
+		return 'twitter';
+	}
+
 }
